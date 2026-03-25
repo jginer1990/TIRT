@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from scipy import constants
+import os
 
 amu = constants.physical_constants['atomic mass constant energy equivalent in MeV'][0]
 
@@ -16,6 +17,10 @@ from input_beam import beam_config
 Main code
 
 '''
+
+output_dir = './outputs'
+if not os.path.exists(output_dir): # Create directory if not existing yet
+    os.makedirs(output_dir)
 
 reaction_config = process_reaction_data(reaction_data)
 
@@ -256,5 +261,6 @@ header = (
     f"# {A_e}{ion_e} {Me/amu} u\n"
     f"# {'x(m)':<15} {'px(rad)':<15} {'y(m)':<15} {'py(rad)':<15} {'t(s)':<15} {'p(MeV/c)':<15} {'E(MeV)':<15}"
 )
+
 # Save data in txt file
-np.savetxt(f'./outputs/{experiment_name}.txt', data, header=header, fmt='%-15.8e', comments='', delimiter='\t')
+np.savetxt(f'{output_dir}/{experiment_name}.txt', data, header=header, fmt='%-15.8e', comments='', delimiter='\t')

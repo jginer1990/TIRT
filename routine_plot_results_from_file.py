@@ -38,7 +38,7 @@ def fig_phase_space(x,y,nbins,xlabel,ylabel):
     return fig, ax_main, ax_x, ax_y
 # -----------------------------------------------------------------------------------------------
 
-data = np.loadtxt('./Data_Li9/outputs_data/9Li_8Li-GS_H4C2.txt', delimiter='\t')
+data = np.loadtxt('./outputs/9Li_8Li-GS_H4C2.txt', delimiter='\t')
 
 xf0, pf0, xf1, pf1, t0, pc_f, Ef = data.T
 
